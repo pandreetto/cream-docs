@@ -213,6 +213,10 @@ These are the basic configuration parameters for BLAH:
 -  ``creamce::job::prefix`` (string): The prefix to be used for the BLAH
    job id, default "cream\_"
 
+-  ``blah::shared_directories`` (list): A list of of paths that are
+   shared among batch system head and worker nodes; the empty list is
+   the default value
+
 The following parameters configure BLAH if BNotifier/BUpdater are
 enabled:
 
@@ -641,18 +645,15 @@ virtual organization,the supported keys for definitions are:
       administrator group, default false, just one administrator group
       is supported
 
--  ``users`` (hash): The description of the pool account, the parameter
-   is ``mandatory``, each key of the hash is the pool account prefix,
-   each value is a hash with the following keys:
-
-   -  ``first_uid`` (integer): The initial number for the unix user id
-      of the pool account, the other ids are obtained incrementally with
-      step equals to 1, the parameter is ``mandatory``
+-  ``users`` (hash): The description of pool accounts or a static users,
+   the parameter is ``mandatory``, each key of the hash is the pool
+   account prefix or the user name for a static user, each value is a
+   hash with the following keys:
 
    -  ``name_pattern`` (list): The pattern used to create the user name
       of the pool account, the variables used for the substitutions are
-      "prefix", the pool account prefix, and "index", the current user
-      id; the expression is described in ruby
+      ``prefix``, the pool account prefix, and ``index``, a consecutive
+      index described below; the expression is explained in the ruby
       `guide <https://ruby-doc.org/core-2.2.0/Kernel.html#method-i-sprintf>`__,
       default value is
 
@@ -660,17 +661,43 @@ virtual organization,the supported keys for definitions are:
 
           %<prefix>s%03<index>d
 
-   -  ``groups`` (list): The list of group for the current account, the
-      first element of the list is the primary group, each element must
-      be defined in ``groups``,the parameter is ``mandatory``
-
-   -  ``pool_size`` (integer): The number of user in the current pool
-      account, the default value is global definition contained into
-      ``creamce::default_pool_size``
+   -  ``fqan`` (list): The list of VOMS Fully Qualified Attribute Name
+      associated with the user of the pool account. The first element of
+      the list is considered the primary FQAN and it is used to
+      calculate the primary group of the user; the other FQANs are used
+      to calculate the secondary groups. The mapping between FQANs and
+      groups refers to the ``groups`` hash for the given VO. For further
+      details about the mapping algorithm refer to the authorization
+      `guide <https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZOH#Account_and_Group_Mapping>`__.
+      The parameter is ``mandatory``
 
    -  ``accounts`` (list): The list of SLURM accounts associated with
       this set of users, the parameter is ``mandatory`` if
       ``slurm::config_accounting`` is set to true
+
+   A pool account can be defined in two different ways. If the user IDs
+   are consecutive the parameters required are:
+
+   -  ``first_uid`` (integer): The initial number for the unix user id
+      of the pool account, the other ids are obtained incrementally with
+      step equals to 1
+
+   -  ``pool_size`` (integer): The number of user in the current pool
+      account, the default value is global definition contained into
+      ``creamce::default_pool_size``. If the value for the pool size is
+      equal to zero the current definition must be considered for a
+      static user.
+
+   If the user IDs are not consecutive their values must be specified
+   with the parameter:
+
+   -  ``uid_list`` (list): The list of user ID; the pool account size is
+      equal to the number of elements of the list.
+
+   In any case the user name is created using the pattern specified by
+   the parameter ``name_pattern`` where the index ranges from 1 to the
+   pool account size (included). It is possible to shift the range of
+   the indexes using the parameter ``creamce::username_offset``.
 
 -  ``vo_app_dir`` (\_string\_): The path of a shared directory available
    for application data for the current Virtual Organization, as
@@ -688,6 +715,7 @@ Example
     ---
     creamce::use_argus :                 false
     creamce::default_pool_size :         10
+    creamce::username_offset :           1
 
     creamce::vo_table :
         dteam : { 
@@ -713,11 +741,12 @@ Example
                 dteamprod : { fqan : [ "/dteam/prod/ROLE=developer" ], gid : 9002 }
             },
             users : {
-                dteamusr : { first_uid : 6000, groups : [ dteam ], 
+                dteamusr : { first_uid : 6000, fqan : [ "/dteam" ], 
                              name_pattern : "%<prefix>s%03%<index>d" },
-                dteamsgmusr : { first_uid : 6100, groups : [ dteamsgm, dteam ], pool_size : 5,
-                                name_pattern : "%<prefix>s%02<index>d" },
-                dteamprodusr : { first_uid : 6200, groups : [ dteamprod, dteam ], pool_size : 5,
-                                 name_pattern : "%<prefix>s%02<index>d" }
+                dteamsgmusr : { first_uid : 6100, fqan : [ "/dteam/sgm/ROLE=developer", "/dteam" ],
+                                pool_size : 5, name_pattern : "%<prefix>s%02<index>d" },
+                dteamprodusr : { fqan : [ "/dteam/prod/ROLE=developer", "/dteam" ],
+                                 name_pattern : "%<prefix>s%02<index>d",
+                                 uid_list  : [ 6200, 6202, 6204, 6206, 6208 ] }
             }
         }
