@@ -125,18 +125,6 @@ The following parameters configure the job wrapper:
    first attempt and the second one) expressed in seconds. In every next
    attempt the sleep time is doubled. Default 300 seconds.
 
-::
-
-    * **creamce::quality_level** (_string_): The service level of the Computing Element, default "production"
-    * **creamce::environment** (_hash_): The environment variables passed to the CE, default empty hash
-    * **creamce::gridenvfile::sh** (_string_): The path of the environment definitions (standard shell), default "/etc/profile.d/grid-env.sh"
-    * **creamce::gridenvfile::csh** (_string_): The path of the environment definitions (korn shell), default "/etc/profile.d/grid-env.csh"
-    * **creamce::cga::logfile** (_string_): The path of the log file for grid account cleaner, default "/var/log/cleanup-grid-accounts.log"
-    * **creamce::cga::cron_sched** (_string_): The time parameters for the grid account cleaner cron script, default "30 1 * * *"
-    * **creamce::at_deny_extras** (_list_): Extra items to be inserted into the ban list for the command at, default empty list
-    * **creamce::cron_deny_extras** (_list_): Extra items to be inserted into the ban list for cron, default empty list
-    * **creamce::sudo_logfile** (_string_): The path of the log file for sudo, default empty string (log on syslog)
-
 CREAM Database
 --------------
 
@@ -750,3 +738,90 @@ Example
                                  uid_list  : [ 6200, 6202, 6204, 6206, 6208 ] }
             }
         }
+
+CREAM with TORQUE
+-----------------
+
+The TORQUE cluster must be install before the deployment of CREAM,
+there's no support in the CREAM CE puppet module for the deployment of
+TORQUE. Nevertheless the module may be used to configure the TORQUE
+client on CREAM CE node if and only if the node is different from the
+TORQUE server node. The YAML parameter which enables the TORQUE client
+configuration is ``torque::config::client``, if it is set to false the
+configuration is disabled, the default value is true. The CREAM CE
+puppet module can create queues and pool accounts in TORQUE, the YAML
+parameter is ``torque::config::pool``, if it is set to false the feature
+is disabled, the default value is true.
+
+Other configuration parameters for TORQUE are:
+
+-  ``torque::host`` (string): The TORQUE server host name, default value
+   is the host name.
+
+-  ``torque::multiple_staging`` (boolean): The BLAH parameter for
+   multiple staging, default false
+
+-  ``torque::tracejob_logs`` (integer): The BLAH parameter for tracejob,
+   default 2
+
+-  ``munge::key_path`` (string): The location of the munge key. If
+   TORQUE client configuration is enabled the path is used to retrieve
+   the manually installed key; ``mandatory`` if
+   ``torque::config::client`` is set to true.
+
+CREAM with SLURM
+----------------
+
+The SLURM cluster must be install before the deployment of CREAM,
+there's no support in the CREAM CE puppet module for the deployment of
+SLURM. The module provides an experimental feature for configuring SLURM
+users and accounts if the accounting is enabled in SLURM. The YAML
+parameter which enables the experimental feature is
+``slurm::config_accounting``, the default value is false. If it is set
+to true each user of the pool account is replicated in the SLURM
+accounting system. The list of SLURM accounts associated to the new user
+is specified by the parameter ``accounts`` of the ``users`` definition
+of the VO table.
+
+CREAM with HTCondor
+-------------------
+
+The HTCondor cluster must be install before the deployment of CREAM,
+there's no support in the CREAM CE puppet module for the deployment of
+HTCondor.
+
+The features described in this section are subject to frequent changes
+and must be considered unstable. Use them at your own risk.
+
+GPU support configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The GPU support in the information system (BDII) can be enabled with the
+configuration parameter ``creamce::info::glue21_draft``\ (boolean), the
+default value is false. The GPU resources must be described in the
+hardware table, inserting in the related sub-cluster hashes the
+following parameter:
+
+-  ``accelerators`` (\_hash\_): The hash table containing the
+   definitions for any accelerator device mounted in the sub-cluster.
+   Each item in the table is a key-value couple. The key is the
+   accelerator ID of the device and the value consists on a hash table
+   with the following mandatory definitions:
+
+   -  ``type`` (string): The type of the device (GPU, MIC, FPGA)
+
+   -  ``log_acc`` (integer): The number of logical accelerator unit in
+      the sub-cluster
+
+   -  ``phys_acc`` (integer): The number of physical accelerator device
+      (cards) in the subcluster
+
+   -  ``vendor`` (string): The vendor ID
+
+   -  ``model`` (string): The model of the device
+
+   -  ``version`` (string): The version of the device
+
+   -  ``clock_speed`` (integer): The clock speed of the device in MHz
+
+   -  ``memory`` (integer): The amount of memory in the device in MByte
