@@ -790,6 +790,9 @@ The HTCondor cluster must be install before the deployment of CREAM,
 there's no support in the CREAM CE puppet module for the deployment of
 HTCondor.
 
+Experimental features
+---------------------
+
 The features described in this section are subject to frequent changes
 and must be considered unstable. Use them at your own risk.
 
