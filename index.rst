@@ -6,6 +6,7 @@ Contents:
 .. toctree::
 
    Overview
+   Installation
    Puppet_Conf
    User_Guide
    JDL_Guide
