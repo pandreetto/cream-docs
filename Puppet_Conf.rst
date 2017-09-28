@@ -595,6 +595,9 @@ account system:
    in a pool account, used if ``pool_size`` is not define for a VO
    group, default 100
 
+-  ``creamce::create_user`` (boolean): False if the creation of the
+   users of all the pool accounts is disabled, default True
+
 VO table
 ~~~~~~~~
 
@@ -658,6 +661,9 @@ virtual organization,the supported keys for definitions are:
       details about the mapping algorithm refer to the authorization
       `guide <https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZOH#Account_and_Group_Mapping>`__.
       The parameter is ``mandatory``
+
+   -  ``create_user`` (boolean): True if the creation of the user is
+      disabled for the current pool account, default is True
 
    -  ``accounts`` (list): The list of SLURM accounts associated with
       this set of users, the parameter is ``mandatory`` if
@@ -730,7 +736,7 @@ Example
             },
             users : {
                 dteamusr : { first_uid : 6000, fqan : [ "/dteam" ], 
-                             name_pattern : "%<prefix>s%03%<index>d" },
+                             name_pattern : "%<prefix>s%03<index>d" },
                 dteamsgmusr : { first_uid : 6100, fqan : [ "/dteam/sgm/ROLE=developer", "/dteam" ],
                                 pool_size : 5, name_pattern : "%<prefix>s%02<index>d" },
                 dteamprodusr : { fqan : [ "/dteam/prod/ROLE=developer", "/dteam" ],
@@ -789,6 +795,27 @@ CREAM with HTCondor
 The HTCondor cluster must be install before the deployment of CREAM,
 there's no support in the CREAM CE puppet module for the deployment of
 HTCondor.
+
+The configuration parameters for HTCondor are:
+
+-  ``condor::deployment_mode`` (string): The queue implementation model
+   used, the value can be "queue\_to\_schedd" or
+   "queue\_to\_jobattribute", the default is "queue\_to\_schedd"
+
+-  ``condor_queue_attr`` (string): The classad attribute used to
+   identify the queue, when the model used is "queue\_to\_jobattribute",
+   ``mandatory`` if the deployment mode is "queue\_to\_jobattribute"
+
+-  ``condor_user_history`` (boolean): True if condor\_history should be
+   used to get the final state info about the jobs, the default is false
+
+-  ``condor::config::dir`` (string): The directory containing the
+   configuration files for the HTCondor installation, the default is
+   /etc/condor/config.d
+
+-  ``condor::command_caching_filter`` (string): The executable for
+   caching the batch systems commands, if not specified the caching
+   mechanism is disabled
 
 Experimental features
 ---------------------
