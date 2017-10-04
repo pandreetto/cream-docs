@@ -821,7 +821,7 @@ fills the JDL.
 CPUNumber
 ~~~~~~~~~
 
-The CpuNumber attribute is an integer greater than 1 specifying the
+The CpuNumber attribute is an integer greater than 0 specifying the
 number of CPUs needed. This attribute can be used in particular for MPI
 jobs. Please note that this attributes allows allocating the specified
 number of CPUs. Then it is up to the job using them to run the job (e.g.
@@ -850,7 +850,9 @@ Hostnumber attribute when WholeNodes is false.
 GPUNumber
 ~~~~~~~~~
 
-------------------------- TODO ---------------------------------
+The GPUNumber attribute is an integer greater than 0 specifying the
+number of accelerator devices (CUDA) required for executing the current
+job.
 
 *Mandatory: No*
 
@@ -859,7 +861,8 @@ GPUNumber
 GPUModel
 ~~~~~~~~
 
-------------------------- TODO ---------------------------------
+The GPUModel attribute is a string containing the model of the
+accelerator device (CUDA) as declared by the vendor.
 
 *Mandatory: No*
 
@@ -874,6 +877,9 @@ should be used exclusively or not.
 *Mandatory: No*
 
 *Default: False*
+
+HostNumber
+~~~~~~~~~~
 
 HostNumber is an integer indicating the number of nodes the user wishes
 to obtain for his job. This attribute can't be specified along with the
@@ -906,7 +912,8 @@ the WMS considering the user's ``Requirements`` expression, and the
 value of the ``CeForwardParameters`` attribute in the WMS configuration
 file.
 
-*TODO: insert link to "Forward of requirements to the batch system"*
+For further details refer to the User
+`guide <User_Guide.html#forward-of-requirements-to-the-batch-system>`__.
 
 *Mandatory: No*
 

@@ -223,7 +223,7 @@ completes its execution they are automatically uploaded on
 
 A detailed description of the available JDL attributes and of the rules
 for building correct JDL files is documented in the CREAM JDL
-`Guide <http://wiki.italiangrid.org/twiki/bin/view/CREAM/JdlGuide>`__.
+`guide <JDL_Guide.html>`__.
 
 The jobs submitted to a CREAM based CE are given the delegated
 credentials of the user who submitted it. These credentials can then be
@@ -664,15 +664,14 @@ Forward of requirements to the batch system
 
 The CREAM CE allows to forward, via tha BLAH component, requirements to
 the batch system. For this purpose the JDL ``CERequirements`` attribute,
-described at in the CREAM JDL
-`Guide <http://wiki.italiangrid.org/twiki/bin/view/CREAM/JdlGuide#3_27_CERequirements>`__,
-can be used. For direct submissions to the CREAM CE (e.g. jobs submitted
-to the CREAM CE using the CREAM CLI ``glite-ce-job-submit`` command) the
-CeRequirements attribute is supposed to be filled by the end-user. For
-jobs submitted to the CREAM CE via the WMS, the ``CeRequirements``
-attribute is instead filled by the WMS, considering the JDL
-``Requirements`` expression and the value of the ``CeForwardParameters``
-attribute in the WMS configuration file.
+described in the CREAM JDL `guide <JDL_Guide.html>`__, can be used. For
+direct submissions to the CREAM CE (e.g. jobs submitted to the CREAM CE
+using the CREAM CLI ``glite-ce-job-submit`` command) the CeRequirements
+attribute is supposed to be filled by the end-user. For jobs submitted
+to the CREAM CE via the WMS, the ``CeRequirements`` attribute is instead
+filled by the WMS, considering the JDL ``Requirements`` expression and
+the value of the ``CeForwardParameters`` attribute in the WMS
+configuration file.
 
 For example, if in the user JDL there is :
 
