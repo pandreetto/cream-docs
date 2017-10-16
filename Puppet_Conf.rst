@@ -629,12 +629,9 @@ virtual organization,the supported keys for definitions are:
 
    -  ``gid`` (string): The unix group id, ``mandatory``
 
-   -  ``fqan`` (list): The list of VOMS Fully Qualified Attribute Name,
-      ``mandatory``
-
-   -  ``pub_admin`` (boolean): True if the group is the defined
-      administrator group, default false, just one administrator group
-      is supported
+   -  ``fqan`` (list): The list of VOMS Fully Qualified Attribute Names.
+      The items in the list are used to compose the group map file. The
+      parameter is ``mandatory``
 
 -  ``users`` (hash): The description of pool accounts or a static users,
    the parameter is ``mandatory``, each key of the hash is the pool
@@ -652,18 +649,29 @@ virtual organization,the supported keys for definitions are:
 
           %<prefix>s%03<index>d
 
-   -  ``fqan`` (list): The list of VOMS Fully Qualified Attribute Name
-      associated with the user of the pool account. The first element of
-      the list is considered the primary FQAN and it is used to
-      calculate the primary group of the user; the other FQANs are used
-      to calculate the secondary groups. The mapping between FQANs and
-      groups refers to the ``groups`` hash for the given VO. For further
-      details about the mapping algorithm refer to the authorization
+   -  ``primary_fqan`` (list): The list of the primary VOMS Fully
+      Qualified Attribute Names associated with the user of the pool
+      account. The attributes are used to calculate the primary group of
+      the user and to compose the grid-map file. The mapping between
+      FQANs and groups refers to the ``groups`` hash for the given VO.
+      For further details about the mapping algorithm refer to the
+      authorization
       `guide <https://twiki.cern.ch/twiki/bin/view/EGEE/AuthZOH#Account_and_Group_Mapping>`__.
       The parameter is ``mandatory``
 
+   -  ``secondary_fqan`` (list): The list of the secondary VOMS Fully
+      Qualified Attribute Names associated with the user of the pool
+      account. The items in the list are used to calculate the secondary
+      groups of the user. The parameter is optional.
+
    -  ``create_user`` (boolean): True if the creation of the user is
       disabled for the current pool account, default is True
+
+   -  ``pub_admin`` (boolean): True if the pool account is the defined
+      administrator account, default false, just one administrator
+      account is supported. The first user in the pool account, or the
+      static user if it is the case, is selected for publishing
+      information about VO tags.
 
    -  ``accounts`` (list): The list of SLURM accounts associated with
       this set of users, the parameter is ``mandatory`` if
@@ -731,15 +739,19 @@ Example
             ],
             groups : {
                 dteam : { fqan : [ "/dteam" ], gid : 9000 },
-                dteamsgm : { fqan : [ "/dteam/sgm/ROLE=developer" ], gid : 9001, pub_admin : true },
+                dteamsgm : { fqan : [ "/dteam/sgm/ROLE=developer" ], gid : 9001 },
                 dteamprod : { fqan : [ "/dteam/prod/ROLE=developer" ], gid : 9002 }
             },
             users : {
-                dteamusr : { first_uid : 6000, fqan : [ "/dteam" ], 
+                dteamusr : { first_uid : 6000, primary_fqan : [ "/dteam" ], 
                              name_pattern : "%<prefix>s%03<index>d" },
-                dteamsgmusr : { first_uid : 6100, fqan : [ "/dteam/sgm/ROLE=developer", "/dteam" ],
-                                pool_size : 5, name_pattern : "%<prefix>s%02<index>d" },
-                dteamprodusr : { fqan : [ "/dteam/prod/ROLE=developer", "/dteam" ],
+                dteamsgmusr : { first_uid : 6100, pool_size : 5,
+                                primary_fqan : [ "/dteam/sgm/ROLE=developer" ],
+                                secondary_fqan : [ "/dteam" ],
+                                name_pattern : "%<prefix>s%02<index>d",
+                                pub_admin : true },
+                dteamprodusr : { primary_fqan : [ "/dteam/prod/ROLE=developer" ],
+                                 secondary_fqan : [ "/dteam" ],
                                  name_pattern : "%<prefix>s%02<index>d",
                                  uid_list  : [ 6200, 6202, 6204, 6206, 6208 ] }
             }
