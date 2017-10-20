@@ -1,7 +1,58 @@
 Puppet Configuration
 ====================
 
-TODO (short introduction)
+The CREAM CE site can be configured with a puppet
+`module <https://forge.puppet.com/infnpd/creamce>`__. The module resorts
+to `hiera <https://puppet.com/docs/puppet/5.3/hiera_intro.html>`__ for
+handling configuration parameters. Parameters are marked by type; simple
+types are "string", "integer" and "boolean"; complex types are "list"
+and "hash".
+
+Hiera can work with different back-ends, like YAML and JSON. For the
+examples of parameter definitions in the following document the
+`YAML <http://yaml.org/spec/1.2/spec.html>`__ syntax is used. According
+to YAML specification, the complex types can be declared in two
+different modes:
+
+-  with indentation:
+
+   ::
+
+       # Example of list type
+       blah::shared_directories :
+           - "/mnt/afs"
+           - "/media/cvmfs"
+
+       # Example of hash type, with nested complex definitions
+       creamce::queues :
+           long :
+               groups :
+                   - dteam
+                   - dteamprod
+
+           short :
+               groups :
+                   - dteamsgm
+
+           
+
+-  with block style:
+
+   ::
+
+       # Example of list type
+       blah::shared_directories : [ "/mnt/afs", "/media/cvmfs" ]
+
+       # Example of hash type, with nested complex definitions
+       creamce::queues : {
+           long : { groups : [ dteam, dteamprod ] },
+           short : { groups : [ dteamsgm ] }
+       }
+           
+
+Mixing the two modes is possible but may be misleading; in case it is
+possible to test the hiera configuration with special tools like
+yamllint, already present in EPEL distribution.
 
 CREAM service parameters
 ------------------------
