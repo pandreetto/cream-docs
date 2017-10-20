@@ -18,17 +18,29 @@ The basic installation of a CREAM site consists on the following
 mandatory packages:
 
 -  canl-java-tomcat
+
 -  cleanup-grid-accounts
+
 -  bdii
+
 -  dynsched-generic
+
 -  glite-ce-cream
+
 -  glite-info-provider-service
+
 -  globus-gridftp-server-progs
+
 -  globus-proxy-utils
+
 -  glue-schema
+
 -  kill-stale-ftp
+
 -  lcg-expiregridmapdir
+
 -  mariadb
+
 -  sudo
 
 If the authorization framework used is based on glexec the following
@@ -250,6 +262,9 @@ The required steps are:
                                   type : Storm, default : true }
            cloud.pd.infn.it : { mount_dir : "/data/mount", export_dir : "/storage/export",
                                 type : Dcache }
+
+   The permissions of the file
+   ``/var/lib/hiera/node/myhost.mydomain.yaml`` must be set to ``600``.
 
 -  Deployment of the host private key in
    ``/etc/grid-security/hostkey.pem``

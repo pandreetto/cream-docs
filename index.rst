@@ -11,7 +11,7 @@ Contents:
    User_Guide
    JDL_Guide
    BLAH_Guide
-
+   Monitoring
 
 Indices and tables
 ==================
