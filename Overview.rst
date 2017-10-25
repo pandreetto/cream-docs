@@ -105,24 +105,27 @@ a consistent manner, a task performed by the Policy Decision Point
 (PDP). Finally, the data provided for evaluation against policies must
 be consistent (in form and definition) and this is done by the Policy
 Enforcement Point (PEP). Argus is also responsible to manage the Grid
-user - local user mapping. gJAF (Grid Java Authorization Framework)
-provides a way to invoke a chain of policy engines and get a decision
-result about the authorization of a user. The policy engines are divided
-in two types, depending on their functionality. They can be plugged into
-the framework in order to form a chain of policy engines as selected by
-the administrator in order to let him set up a complete authorization
+user - local user mapping.
+
+gJAF (Grid Java Authorization Framework) provides a way to invoke a
+chain of policy engines and get a decision result about the
+authorization of a user. The policy engines are divided in two types,
+depending on their functionality. They can be plugged into the framework
+in order to form a chain of policy engines as selected by the
+administrator in order to let him set up a complete authorization
 system. A policy engine may be either a PIP or a PDP. PIP collect and
 verify assertions and capabilities associated with the user, checking
 her role, group and VO attributes. PDP may use the information retrieved
 by a PIP to decide whether the user is allowed to perform the requested
 action, whether further evaluation is needed, or whether the evaluation
-should be interrupted and the user access denied. In CREAM CE VO based
-authorization is supported. In this scenario, implemented via the VOMS
-PDP, the administrator can specify authorization policies based on the
-VO the jobs' owners belong to (or on particular VO attributes). When
-gJAF is used as authorization mechanism, the Grid user - local user
-mapping is managed via glexec, For what concerns authorization on job
-operations, by default each user can manage (e.g. cancel, suspend, etc.)
-only her own jobs. However, the CREAM administrator can define specific
-super-users who are empowered to manage also jobs submitted by other
-users.
+should be interrupted and the user access denied.
+
+In CREAM CE VO based authorization is supported. In this scenario,
+implemented via the VOMS PDP, the administrator can specify
+authorization policies based on the VO the jobs' owners belong to (or on
+particular VO attributes). When gJAF is used as authorization mechanism,
+the Grid user - local user mapping is managed via glexec, For what
+concerns authorization on job operations, by default each user can
+manage (e.g. cancel, suspend, etc.) only her own jobs. However, the
+CREAM administrator can define specific super-users who are empowered to
+manage also jobs submitted by other users.
