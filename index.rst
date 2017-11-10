@@ -12,6 +12,7 @@ Contents:
    JDL_Guide
    BLAH_Guide
    Monitoring
+   Releases
 
 Indices and tables
 ==================
