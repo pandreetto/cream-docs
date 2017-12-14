@@ -43,6 +43,8 @@ The list of packages for the CREAM services is the following:
 +-------------------------------------+---------------+-----------+
 | glite-ce-wsdl                       | 1.15.1-1      | noarch    |
 +-------------------------------------+---------------+-----------+
+| glite-info-dynamic-ge               | 7.2.0-29.1    | noarch    |
++-------------------------------------+---------------+-----------+
 | glite-jdl-api-java                  | 3.3.2-3       | noarch    |
 +-------------------------------------+---------------+-----------+
 | glite-jdl-api-java-doc              | 3.3.2-3       | noarch    |
@@ -95,3 +97,50 @@ The list of packages for the CREAM clients is the following:
 The installation and configuration of the CREAM CE site is certified
 with the puppet `module <https://forge.puppet.com/infnpd/creamce>`__
 version 0.0.16 or greater.
+
+The supported batch systems are:
+
++----------------+------------+
+| Batch system   | Version    |
++================+============+
+| TORQUE         | 4.2.10     |
++----------------+------------+
+| SLURM          | 16.05.10   |
++----------------+------------+
+| Htcondor       | 8.6.3      |
++----------------+------------+
+| LSF            | 7.0        |
++----------------+------------+
+| GridEngine     | 6.2        |
++----------------+------------+
+
+The fixed issues are:
+
+-  GGUS-Ticket-ID:
+   `#106384 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=106384>`__
+
+-  GGUS-Ticket-ID:
+   `#122974 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=122974>`__
+
+-  GGUS-Ticket-ID:
+   `#124034 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=124034>`__
+
+-  GGUS-Ticket-ID:
+   `#124404 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=124404>`__
+
+-  GGUS-Ticket-ID:
+   `#127020 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=127020>`__
+
+The known issues are:
+
+-  The CREAM UI requires classads libraries up to version 8.4.11, it
+   does not work with versions 8.6.\*
+
+-  GridEngine is partially supported, the infoprovider does not publish
+   informationa about acceleratore devices.
+
+-  The puppet agent may report parsing errors.
+
+-  If HTCondor is the batch system adopted, the HTCondor services on the
+   computing element must be restarted after the installation of the
+   CREAM service.
