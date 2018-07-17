@@ -437,7 +437,10 @@ hardware table is a hash table with the following structure:
 Software table
 ~~~~~~~~~~~~~~
 
-The software table is a hash with the following structure:
+The software table contains any information about the applications
+installed in the worker nodes; the parameter to be used is
+``creamce::software_table``. The software table is a hash with the
+following structure:
 
 -  the key of an entry in the table is the tag assigned to the software
    installed on the machines (see GLUE2 application environment); tags
@@ -725,8 +728,8 @@ virtual organization,the supported keys for definitions are:
       information about VO tags.
 
    -  ``accounts`` (list): The list of SLURM accounts associated with
-      this set of users, the parameter is ``mandatory`` if
-      ``slurm::config_accounting`` is set to true
+      this set of users, further details can be found in the SLURM
+      specific section
 
    A pool account can be defined in two different ways. If the user IDs
    are consecutive the parameters required are:
@@ -844,13 +847,24 @@ CREAM with SLURM
 The SLURM cluster must be install before the deployment of CREAM,
 there's no support in the CREAM CE puppet module for the deployment of
 SLURM. The module provides an experimental feature for configuring SLURM
-users and accounts if the accounting is enabled in SLURM. The YAML
-parameter which enables the experimental feature is
-``slurm::config_accounting``, the default value is false. If it is set
-to true each user of the pool account is replicated in the SLURM
-accounting system. The list of SLURM accounts associated to the new user
-is specified by the parameter ``accounts`` of the ``users`` definition
-of the VO table.
+users and accounts if the
+`accounting <https://slurm.schedmd.com/accounting.html>`__ subsystem is
+enabled in SLURM. The YAML parameter which enables the experimental
+feature is ``slurm::config_accounting``, the default value is false. If
+it is set to true each user of the pool account is replicated in the
+SLURM accounting subsystem. The site administrator can associate to the
+any replicated user one or more SLURM accounts in two different ways:
+
+-  Specifying a list of accounts already created in SLURM. The list of
+   SLURM accounts associated to the new user is specified by the
+   parameter ``accounts`` of the ``users`` definition of the VO table;
+   the parameter is mandatory in this case.
+
+-  Delegating the creation of the SLURM accounts to the puppet module.
+   The module creates a SLURM account for each VO and a SLURM
+   sub-account for each group in a given VO. The parameter to be set for
+   enabling the automatic creation of account is
+   ``slurm::standard_accounts``, its default value is false.
 
 CREAM with HTCondor
 -------------------

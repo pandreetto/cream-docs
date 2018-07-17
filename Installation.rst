@@ -6,7 +6,7 @@ Requirements
 
 The requirements for a basic installation of a CREAM site are:
 
--  A system based on Cent OS version 7 or compatibile distribution.
+-  Scientific Linux 6, Cent OS version 7 or compatibile distributions.
 
 -  The UMD4 extension as described in the UMD
    `guide <http://repository.egi.eu/category/umd_releases/distribution/umd-4/>`__
@@ -95,7 +95,7 @@ Example
 
 This section illustrate an example of installation of a CREAM site by
 means of a standalone execution of puppet. In the following examples the
-FQDN of the CREAM site is myhost.mydomain.
+FQDN of the CREAM CE is myhost.mydomain.
 
 The required steps are:
 
@@ -104,6 +104,15 @@ The required steps are:
    ::
 
        yum -y install puppet
+
+-  Verification of the puppet environment:
+
+   ::
+
+       facter | grep -E 'hostname|fqdn'
+
+   If the FQDN of the host is not correctly resolved it is necessary to
+   specify the parameter ``creamce::host``
 
 -  Installation of the CREAM CE module for puppet:
 

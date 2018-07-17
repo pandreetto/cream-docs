@@ -1,6 +1,103 @@
 Releases
 ========
 
+Release 1.16.7
+--------------
+
+The current release of the CREAM service is fully compatible with the
+latest version of Bouncycastle, CAnL and VOMS published in EPEL.
+
+The fixed issues are:
+
+-  GGUS-Ticket-ID:
+   `#106384 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=106384>`__
+
+-  GGUS-Ticket-ID:
+   `#122974 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=122974>`__
+
+-  GGUS-Ticket-ID:
+   `#124404 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=124404>`__
+
+-  GGUS-Ticket-ID:
+   `#127020 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=127020>`__
+
+-  GGUS-Ticket-ID:
+   `#133522 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=133522>`__
+
+The list of packages for the CREAM services on CentOS 7 is the
+following:
+
++--------------------------------+------------+-----------+
+| Package                        | Version    | Arch      |
++================================+============+===========+
+| BLAH                           | 1.22.3-1   | x86\_64   |
++--------------------------------+------------+-----------+
+| BLAH-debuginfo                 | 1.22.3-1   | x86\_64   |
++--------------------------------+------------+-----------+
+| glite-ce-common-java           | 1.16.5-2   | noarch    |
++--------------------------------+------------+-----------+
+| glite-ce-common-java-doc       | 1.16.5-2   | noarch    |
++--------------------------------+------------+-----------+
+| glite-ce-cream                 | 1.16.5-5   | noarch    |
++--------------------------------+------------+-----------+
+| glite-ce-cream-api-java        | 1.16.6-3   | noarch    |
++--------------------------------+------------+-----------+
+| glite-ce-cream-core            | 1.16.5-5   | noarch    |
++--------------------------------+------------+-----------+
+| glite-ce-cream-utils           | 1.3.7-1    | x86\_64   |
++--------------------------------+------------+-----------+
+| info-dynamic-scheduler-slurm   | 1.0.5-1    | noarch    |
++--------------------------------+------------+-----------+
+
+The list of packages for the CREAM services on Scientific Linux 6 is the
+following:
+
++-------------------------------------+------------+-----------+
+| Package                             | Version    | Arch      |
++=====================================+============+===========+
+| canl-java-tomcat                    | 0.1.19-2   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-blahp                      | 1.22.3-1   | x86\_64   |
++-------------------------------------+------------+-----------+
+| glite-ce-blahp-debuginfo            | 1.22.3-1   | x86\_64   |
++-------------------------------------+------------+-----------+
+| glite-ce-common-java                | 1.16.5-2   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-common-java-doc            | 1.16.5-2   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-cream                      | 1.16.5-5   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-cream-api-java             | 1.16.6-3   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-cream-core                 | 1.16.5-5   | noarch    |
++-------------------------------------+------------+-----------+
+| glite-ce-cream-utils                | 1.3.7-1    | x86\_64   |
++-------------------------------------+------------+-----------+
+| info-dynamic-scheduler-lsf          | 2.3.8-1    | noarch    |
++-------------------------------------+------------+-----------+
+| info-dynamic-scheduler-lsf-btools   | 2.3.8-1    | noarch    |
++-------------------------------------+------------+-----------+
+| info-dynamic-scheduler-slurm        | 1.0.5-1    | noarch    |
++-------------------------------------+------------+-----------+
+| lcg-info-dynamic-scheduler-condor   | 1.1-1      | noarch    |
++-------------------------------------+------------+-----------+
+| lcg-info-dynamic-scheduler-pbs      | 2.4.6-1    | noarch    |
++-------------------------------------+------------+-----------+
+
+The installation and configuration of the CREAM CE site is certified
+with the puppet `module <https://forge.puppet.com/infnpd/creamce>`__
+version 0.1.1 or greater. YAIM is no more supported on Scientific Linux
+6, even if the current release is still compatible with the latest
+release of the deprecated framework.
+
+The basic requirement for the installation is UMD 4.7.0; the YUM
+repositories are available both for `Scientific Linux
+6 <http://igi-01.pd.infn.it/mrepo/dist/CREAM/repos/sl6/cream-updates.repo>`__
+and `CentOS
+7 <http://igi-01.pd.infn.it/mrepo/dist/CREAM/repos/centos7/cream-updates.repo>`__.
+The GPG public key is available
+`here <http://igi-01.pd.infn.it/mrepo/dist/RPM-GPG-KEY-cream-dist>`__.
+
 Release 1.16.6
 --------------
 
