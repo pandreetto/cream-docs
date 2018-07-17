@@ -24,6 +24,9 @@ The fixed issues are:
 -  GGUS-Ticket-ID:
    `#133522 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=133522>`__
 
+-  GGUS-Ticket-ID:
+   `#136074 <https://ggus.eu/index.php?mode=ticket_info&ticket_id=136074>`__
+
 The list of packages for the CREAM services on CentOS 7 is the
 following:
 
