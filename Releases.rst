@@ -87,7 +87,8 @@ following:
 | lcg-info-dynamic-scheduler-pbs      | 2.4.6-1    | noarch    |
 +-------------------------------------+------------+-----------+
 
-The basic requirement for the installation is UMD 4.7.1. The
+The basic requirement for the installation is UMD 4.7.1. The java
+application requires Java SE 8 (OpenJDK 1.8.0 or later). The
 installation and configuration of the CREAM CE site is certified with
 the puppet `module <https://forge.puppet.com/infnpd/creamce>`__ version
 0.1.1 or greater. YAIM is no more supported on Scientific Linux 6 and
@@ -101,6 +102,10 @@ additional steps:
 
 -  Any broken link in */var/lib/tomcat6/webapps/ce-cream/WEB-INF/lib*
    and */usr/share/tomcat6/lib* must be manually deleted.
+
+If YAIM is used for the configuration it is necessary to create a
+symbolic link from */usr/share/java/bcprov-1.58.jar* into
+*/usr/share/java/bcprov.jar* and re-running the configurator.
 
 Release 1.16.6
 --------------
