@@ -87,19 +87,20 @@ following:
 | lcg-info-dynamic-scheduler-pbs      | 2.4.6-1    | noarch    |
 +-------------------------------------+------------+-----------+
 
-The installation and configuration of the CREAM CE site is certified
-with the puppet `module <https://forge.puppet.com/infnpd/creamce>`__
-version 0.1.1 or greater. YAIM is no more supported on Scientific Linux
-6, even if the current release is still compatible with the latest
-release of the deprecated framework.
+The basic requirement for the installation is UMD 4.7.1. The
+installation and configuration of the CREAM CE site is certified with
+the puppet `module <https://forge.puppet.com/infnpd/creamce>`__ version
+0.1.1 or greater. YAIM is no more supported on Scientific Linux 6 and
+its usage must be considered at "your own risk".
 
-The basic requirement for the installation is UMD 4.7.0; the YUM
-repositories are available both for `Scientific Linux
-6 <http://igi-01.pd.infn.it/mrepo/dist/CREAM/repos/sl6/cream-updates.repo>`__
-and `CentOS
-7 <http://igi-01.pd.infn.it/mrepo/dist/CREAM/repos/centos7/cream-updates.repo>`__.
-The GPG public key is available
-`here <http://igi-01.pd.infn.it/mrepo/dist/RPM-GPG-KEY-cream-dist>`__.
+The update process on Scientific Linux 6 requires the following
+additional steps:
+
+-  After the update it is necessary to remove the packages
+   *bouncycastle-mail* and *bouncycastle* (version 1.46).
+
+-  Any broken link in */var/lib/tomcat6/webapps/ce-cream/WEB-INF/lib*
+   and */usr/share/tomcat6/lib* must be manually deleted.
 
 Release 1.16.6
 --------------

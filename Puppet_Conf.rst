@@ -718,7 +718,7 @@ virtual organization,the supported keys for definitions are:
       account. The items in the list are used to calculate the secondary
       groups of the user. The parameter is optional.
 
-   -  ``create_user`` (boolean): True if the creation of the user is
+   -  ``create_user`` (boolean): False if the creation of the user is
       disabled for the current pool account, default is True
 
    -  ``pub_admin`` (boolean): True if the pool account is the defined
