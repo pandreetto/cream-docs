@@ -1634,3 +1634,26 @@ It is possible to configure some parameter in the blah.config file:
    when a limited -and- delegated proxy is presented.
 
 -  \_blah\_graceful\_kill\_glexecable\_cmd\_format\_
+
+
+BLAH Accounting
+---------------
+
+Log records are written in a daily file specified as `<prefix>-YYYMMDD`, where `<prefix>` is specified in blah.config:
+<br>`BLAHPD_ACCOUNTING_INFO_LOG=/var/log/accounting/blahp.log`<br>
+
+The format of the record is:
+<br>`"<field>=<value>" [<SP> "<field>=<value>" ...] <LF>`<br>
+thus all values are assumed to have no double quotes inside.
+
+The fields are:
+- **timestamp**: record creation date (~ lrms submission time)
+- **userDN**: user's certificate distinguished name 
+- **userFQAN**: user's certificate Fully Qualified Attribute Names (i.e. VO and roles) - repeated, one per FQAN
+- **ceID**: Computing Element's ID as appearing in the Glue schema
+- **jobID**: the Grid job ID (i.e. the one returned to the user by the CE)
+- **lrmsID**: the ID of the job in the batch system
+- **localUser**: numeric uid of the local account mapped to the remote user
+- **clientId**: a job identifier (arbirtary string) provided by the CE at submission time
+
+Accounting can be disabled in BLAH by commenting out the BLAHPD_ACCOUNTING_INFO_LOG line in blah.config.
