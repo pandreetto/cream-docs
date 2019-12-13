@@ -341,11 +341,11 @@ If verbose mode is disabled, the output should look like this:
     $ ./cream_jobOutput.py --hostname prod-ce-01.pd.infn.it --port 8443 --lrms lsf --queue grid -x /tmp/x509up_u733 --dir /tmp --jdl ./hostname.jdl
     CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
-   **** std.err ****
+    **** std.err ****
 
 
-   **** std.out ****
-   prod-wn-038
+    **** std.out ****
+    prod-wn-038
 
 
 Notice: the use of the ``--dir`` and the output-sandbox content returned in the output message.
