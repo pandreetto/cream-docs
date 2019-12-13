@@ -40,7 +40,7 @@ and provide a better approach for probing a CREAM CE and its WNs:
 
 -  ``cream_jobSubmit.py`` - submit a job directly to the selected CREAM CE
 
--  ``cream_jobOutput.py`` - submit a job directly to the selected CREAM CE and retrieve the output sandbox
+-  ``cream_jobOutput.py`` - submit a job directly to the selected CREAM CE and retrieve the output-sandbox
 
 -  ``WN-softver probe`` - check middleware version on WN (via cream_jobOutput.py)
 
@@ -458,7 +458,7 @@ This probe checks that csh is there on a WN managed by the CREAM-CE. It makes us
 
 ::
 
-    $  ./cream_jobOutput.py --url https://prod-ce-01.pd.infn.it:8443/cream-lsf-grid -x /tmp/x509up_u733 --dir /tmp -j ./WN-csh.jdl
+    $ ./cream_jobOutput.py --url https://prod-ce-01.pd.infn.it:8443/cream-lsf-grid -x /tmp/x509up_u733 --dir /tmp -j ./WN-csh.jdl
    CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
    **** std.err ****
