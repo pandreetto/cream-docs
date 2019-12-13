@@ -77,6 +77,7 @@ For example:
     $ ./cream_serviceInfo.py --version
     cream_serviceInfo v.1.1
 
+
 The interaction with the CREAM CE requires the use of a valid VOMS proxy expressed by the ``X509_USER_PROXY`` env variable or through the ``--proxy`` option. All metrics check the existence of the proxy file and calculate the time left. In case of error, the related error message will be thrown:
 
 ::
@@ -104,6 +105,7 @@ In case of mistakes on the selected options or on their values, the probe tries 
 
     cream_serviceInfo.py: error: no such option: --queue
 
+
 In case of the errors in interacting with the CREAM CE, useful details will be provided about the failure:
 
 ::
@@ -112,8 +114,8 @@ In case of the errors in interacting with the CREAM CE, useful details will be p
     command '/usr/bin/glite-ce-allowed-submission cream-43.pd.infn.it:8443' failed: return_code=1
     details: ['2019-12-13 15:59:57,085 FATAL - Received NULL fault; the error is due to another cause: FaultString=[connection error] - FaultCode=[SOAP-ENV:Client] - FaultSubCode=[SOAP-ENV:Client] - FaultDetail=[Connection refused]\n']
 
-Sources are available in
-`github <https://github.com/italiangrid/cream-nagios/tree/master/src>`__
+
+Sources are available in `github <https://github.com/italiangrid/cream-nagios/tree/master/src>`__
 
 
 cream\_serviceInfo.py
@@ -249,6 +251,7 @@ Consider the JDL file hostname.jdl with the following content:
     OutputSandboxBaseDestUri="gsiftp://localhost";
     ]
 
+
 If verbose mode is disabled, the output should look like this:
 
 ::
@@ -262,6 +265,7 @@ Notice: the use of the ``--url`` option is equivalent to specify both the option
 
     $ ./cream_jobSubmit.py --hostname prod-ce-01.pd.infn.it --port 8443 --lrms lsf --queue grid -x /tmp/x509up_u733 --jdl ./hostname.jdl 
     CREAM JobSubmit OK [DONE-OK]
+
 
 If the verbose mode is enabled, the output of the above command should be like this:
 
@@ -282,7 +286,7 @@ If the verbose mode is enabled, the output of the above command should be like t
     executing command: /usr/bin/glite-ce-job-purge --noint https://prod-ce-01.pd.infn.it:8443/CREAM067861520
     CREAM JobSubmit OK [DONE-OK]
 
-    
+
 cream\_jobOutput.py
 ~~~~~~~~~~~~~~~~~~~
 
