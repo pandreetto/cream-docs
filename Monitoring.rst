@@ -153,7 +153,7 @@ or similary:
 ::
 
     $ ./cream_serviceInfo.py --hostname prod-ce-01.pd.infn.it --port 8443 -x /tmp/x509up_u733
-   CREAM serviceInfo OK: Service Version = [1.16.4 - EMI version: 3.15.0-1.el6]
+    CREAM serviceInfo OK: Service Version = [1.16.4 - EMI version: 3.15.0-1.el6]
 
 
 cream\_allowedSubmission.py
@@ -352,32 +352,32 @@ be like this:
 ::
 
     $ ./cream_jobOutput.py --hostname prod-ce-01.pd.infn.it --port 8443 --lrms lsf --queue grid -x /tmp/x509up_u733 --dir /tmp --jdl ./hostname.jdl --verbose
-   executing command: /usr/bin/voms-proxy-info -timeleft
-   executing command: /usr/bin/glite-ce-job-submit -d -a -r prod-ce-01.pd.infn.it:8443/cream-lsf-grid ./hostname.jdl
-   ['2019-12-13 14:02:55,478 DEBUG - Using certificate proxy file [/tmp/x509up_u733]\n', '2019-12-13 14:02:55,519 DEBUG - VO from certificate=[enmr.eu]\n', '2019-12-13 14:02:55,520 WARN - No configuration file suitable for loading. Using built-in configuration\n', '2019-12-13 14:02:55,520 DEBUG - Logfile is [/tmp/glite_cream_cli_logs/glite-ce-job-submit_CREAM_zangrand_20191213-140255.log]\n', '2019-12-13 14:02:55,523 INFO - certUtil::generateUniqueID() - Generated DelegationID: [b6b895d69f7ef0d438db82930476a2fd149d0501]\n', '2019-12-13 14:02:57,610 DEBUG - Registering to [https://prod-ce-01.pd.infn.it:8443/ce-cream/services/CREAM2] JDL=[ StdOutput = "std.out"; BatchSystem = "lsf"; QueueName = "grid"; Executable = "/bin/hostname"; Type = "Job"; Arguments = "-s"; JobType = "Normal"; OutputSandboxBaseDestUri = "gsiftp://localhost"; OutputSandbox = { "std.out","std.err" }; StdError = "std.err" ] - JDL File=[./hostname.jdl]\n', '2019-12-13 14:02:58,271 DEBUG - Will invoke JobStart for JobID [CREAM160637101]\n', 'https://prod-ce-01.pd.infn.it:8443/CREAM160637101\n']
-   job id: https://prod-ce-01.pd.infn.it:8443/CREAM160637101
-   invoking jobStatus
-   executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM160637101
-   ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM160637101]\n', '\tStatus        = [IDLE]\n', '\n', '\n']
-   job status: IDLE
-   invoking jobStatus
-   executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM160637101
-   ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM160637101]\n', '\tStatus        = [DONE-OK]\n', '\tExitCode      = [0]\n', '\n', '\n']
-   exitCode=	ExitCode      = [0]
+    executing command: /usr/bin/voms-proxy-info -timeleft
+    executing command: /usr/bin/glite-ce-job-submit -d -a -r prod-ce-01.pd.infn.it:8443/cream-lsf-grid ./hostname.jdl
+    ['2019-12-13 14:02:55,478 DEBUG - Using certificate proxy file [/tmp/x509up_u733]\n', '2019-12-13 14:02:55,519 DEBUG - VO from certificate=[enmr.eu]\n', '2019-12-13 14:02:55,520 WARN - No configuration file suitable for loading. Using built-in configuration\n', '2019-12-13 14:02:55,520 DEBUG - Logfile is [/tmp/glite_cream_cli_logs/glite-ce-job-submit_CREAM_zangrand_20191213-140255.log]\n', '2019-12-13 14:02:55,523 INFO - certUtil::generateUniqueID() - Generated DelegationID: [b6b895d69f7ef0d438db82930476a2fd149d0501]\n', '2019-12-13 14:02:57,610 DEBUG - Registering to [https://prod-ce-01.pd.infn.it:8443/ce-cream/services/CREAM2] JDL=[ StdOutput = "std.out"; BatchSystem = "lsf"; QueueName = "grid"; Executable = "/bin/hostname"; Type = "Job"; Arguments = "-s"; JobType = "Normal"; OutputSandboxBaseDestUri = "gsiftp://localhost"; OutputSandbox = { "std.out","std.err" }; StdError = "std.err" ] - JDL File=[./hostname.jdl]\n', '2019-12-13 14:02:58,271 DEBUG - Will invoke JobStart for JobID [CREAM160637101]\n', 'https://prod-ce-01.pd.infn.it:8443/CREAM160637101\n']
+    job id: https://prod-ce-01.pd.infn.it:8443/CREAM160637101
+    invoking jobStatus
+    executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM160637101
+    ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM160637101]\n', '\tStatus        = [IDLE]\n', '\n', '\n']
+    job status: IDLE
+    invoking jobStatus
+    executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM160637101
+    ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM160637101]\n', '\tStatus        = [DONE-OK]\n', '\tExitCode      = [0]\n', '\n', '\n']
+    exitCode=	ExitCode      = [0]
 
-   job status: DONE-OK
-   invoking getOutputSandbox
-   executing command: /usr/bin/glite-ce-job-output --noint --dir /tmp https://prod-ce-01.pd.infn.it:8443/CREAM160637101
-   output sandbox dir: /tmp/prod-ce-01.pd.infn.it_8443_CREAM160637101
-   invoking jobPurge
-   executing command: /usr/bin/glite-ce-job-purge --noint https://prod-ce-01.pd.infn.it:8443/CREAM160637101
-   CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
+    job status: DONE-OK
+    invoking getOutputSandbox
+    executing command: /usr/bin/glite-ce-job-output --noint --dir /tmp https://prod-ce-01.pd.infn.it:8443/CREAM160637101
+    output sandbox dir: /tmp/prod-ce-01.pd.infn.it_8443_CREAM160637101
+    invoking jobPurge
+    executing command: /usr/bin/glite-ce-job-purge --noint https://prod-ce-01.pd.infn.it:8443/CREAM160637101
+    CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
-   **** std.err ****
+    **** std.err ****
 
 
-   **** std.out ****
-   prod-wn-038
+    **** std.out ****
+    prod-wn-038
     
 
 WN-softver probe
@@ -388,13 +388,13 @@ This probe checks the middleware version on a WN managed by the CREAM-CE. It mak
 ::
 
     $ ./cream_jobOutput.py --url https://prod-ce-01.pd.infn.it:8443/cream-lsf-grid -x /tmp/x509up_u733 --dir /tmp -j ./WN-softver.jdl
-   CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
+    CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
-   **** std.err ****
+    **** std.err ****
 
 
-   **** std.out ****
-   prod-wn-014 has EMI 3.15.0-1.el6
+    **** std.out ****
+    prod-wn-014 has EMI 3.15.0-1.el6
 
 
 where
@@ -423,32 +423,32 @@ The verbose option enabled gives the following output:
 ::
 
     $ ./cream_jobOutput.py --url https://prod-ce-01.pd.infn.it:8443/cream-lsf-grid -x /tmp/x509up_u733 --dir /tmp -j ./WN-softver.jdl --verbose
-   executing command: /usr/bin/voms-proxy-info -timeleft
-   executing command: /usr/bin/glite-ce-job-submit -d -a -r prod-ce-01.pd.infn.it:8443/cream-lsf-grid ./WN-softver.jdl
-   ['2019-12-13 14:06:25,768 DEBUG - Using certificate proxy file [/tmp/x509up_u733]\n', '2019-12-13 14:06:25,804 DEBUG - VO from certificate=[enmr.eu]\n', '2019-12-13 14:06:25,805 WARN - No configuration file suitable for loading. Using built-in configuration\n', '2019-12-13 14:06:25,805 DEBUG - Logfile is [/tmp/glite_cream_cli_logs/glite-ce-job-submit_CREAM_zangrand_20191213-140625.log]\n', '2019-12-13 14:06:25,805 DEBUG - Processing file [/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh]...\n', '2019-12-13 14:06:25,805 DEBUG - Inserting mangled InputSandbox in JDL: [{"/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh"}]...\n', '2019-12-13 14:06:25,806 INFO - certUtil::generateUniqueID() - Generated DelegationID: [7f0ac5ec8a7deefa01f207c0b341fce1568f5282]\n', '2019-12-13 14:06:27,612 DEBUG - Registering to [https://prod-ce-01.pd.infn.it:8443/ce-cream/services/CREAM2] JDL=[ StdOutput = "std.out"; BatchSystem = "lsf"; QueueName = "grid"; Executable = "WN-softver.sh"; Type = "Job"; JobType = "Normal"; OutputSandboxBaseDestUri = "gsiftp://localhost"; OutputSandbox = { "std.out","std.err" }; InputSandbox = { "/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh" }; StdError = "std.err" ] - JDL File=[./WN-softver.jdl]\n', '2019-12-13 14:06:28,228 DEBUG - JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '2019-12-13 14:06:28,228 DEBUG - UploadURL=[gsiftp://prod-ce-01.pd.infn.it/var/cream_sandbox/enmr/CN_Marco_Verlato_verlato_infn_it_O_Istituto_Nazionale_di_Fisica_Nucleare_C_IT_DC_tcs_DC_terena_DC_org_enmr_eu_Role_NULL_Capability_NULL_enmr018/60/CREAM608273414/ISB]\n', '2019-12-13 14:06:28,230 INFO - Sending file [gsiftp://prod-ce-01.pd.infn.it/var/cream_sandbox/enmr/CN_Marco_Verlato_verlato_infn_it_O_Istituto_Nazionale_di_Fisica_Nucleare_C_IT_DC_tcs_DC_terena_DC_org_enmr_eu_Role_NULL_Capability_NULL_enmr018/60/CREAM608273414/ISB/WN-softver.sh]\n', '2019-12-13 14:06:28,482 DEBUG - Will invoke JobStart for JobID [CREAM608273414]\n', 'https://prod-ce-01.pd.infn.it:8443/CREAM608273414\n']
-   job id: https://prod-ce-01.pd.infn.it:8443/CREAM608273414
-   invoking jobStatus
-   executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM608273414
-   ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '\tStatus        = [REALLY-RUNNING]\n', '\n', '\n']
-   job status: REALLY-RUNNING
-   invoking jobStatus
-   executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM608273414
-   ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '\tStatus        = [DONE-OK]\n', '\tExitCode      = [0]\n', '\n', '\n']
-   exitCode=	ExitCode      = [0]
+    executing command: /usr/bin/voms-proxy-info -timeleft
+    executing command: /usr/bin/glite-ce-job-submit -d -a -r prod-ce-01.pd.infn.it:8443/cream-lsf-grid ./WN-softver.jdl
+    ['2019-12-13 14:06:25,768 DEBUG - Using certificate proxy file [/tmp/x509up_u733]\n', '2019-12-13 14:06:25,804 DEBUG - VO from certificate=[enmr.eu]\n', '2019-12-13 14:06:25,805 WARN - No configuration file suitable for loading. Using built-in configuration\n', '2019-12-13 14:06:25,805 DEBUG - Logfile is [/tmp/glite_cream_cli_logs/glite-ce-job-submit_CREAM_zangrand_20191213-140625.log]\n', '2019-12-13 14:06:25,805 DEBUG - Processing file [/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh]...\n', '2019-12-13 14:06:25,805 DEBUG - Inserting mangled InputSandbox in JDL: [{"/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh"}]...\n', '2019-12-13 14:06:25,806 INFO - certUtil::generateUniqueID() - Generated DelegationID: [7f0ac5ec8a7deefa01f207c0b341fce1568f5282]\n', '2019-12-13 14:06:27,612 DEBUG - Registering to [https://prod-ce-01.pd.infn.it:8443/ce-cream/services/CREAM2] JDL=[ StdOutput = "std.out"; BatchSystem = "lsf"; QueueName = "grid"; Executable = "WN-softver.sh"; Type = "Job"; JobType = "Normal"; OutputSandboxBaseDestUri = "gsiftp://localhost"; OutputSandbox = { "std.out","std.err" }; InputSandbox = { "/users/cms/zangrand/cream-nagios-master/src/WN-softver.sh" }; StdError = "std.err" ] - JDL File=[./WN-softver.jdl]\n', '2019-12-13 14:06:28,228 DEBUG - JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '2019-12-13 14:06:28,228 DEBUG - UploadURL=[gsiftp://prod-ce-01.pd.infn.it/var/cream_sandbox/enmr/CN_Marco_Verlato_verlato_infn_it_O_Istituto_Nazionale_di_Fisica_Nucleare_C_IT_DC_tcs_DC_terena_DC_org_enmr_eu_Role_NULL_Capability_NULL_enmr018/60/CREAM608273414/ISB]\n', '2019-12-13 14:06:28,230 INFO - Sending file [gsiftp://prod-ce-01.pd.infn.it/var/cream_sandbox/enmr/CN_Marco_Verlato_verlato_infn_it_O_Istituto_Nazionale_di_Fisica_Nucleare_C_IT_DC_tcs_DC_terena_DC_org_enmr_eu_Role_NULL_Capability_NULL_enmr018/60/CREAM608273414/ISB/WN-softver.sh]\n', '2019-12-13 14:06:28,482 DEBUG - Will invoke JobStart for JobID [CREAM608273414]\n', 'https://prod-ce-01.pd.infn.it:8443/CREAM608273414\n']
+    job id: https://prod-ce-01.pd.infn.it:8443/CREAM608273414
+    invoking jobStatus
+    executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM608273414
+    ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '\tStatus        = [REALLY-RUNNING]\n', '\n', '\n']
+    job status: REALLY-RUNNING
+    invoking jobStatus
+    executing command: /usr/bin/glite-ce-job-status https://prod-ce-01.pd.infn.it:8443/CREAM608273414
+    ['\n', '******  JobID=[https://prod-ce-01.pd.infn.it:8443/CREAM608273414]\n', '\tStatus        = [DONE-OK]\n', '\tExitCode      = [0]\n', '\n', '\n']
+    exitCode=	ExitCode      = [0]
 
-   job status: DONE-OK
-   invoking getOutputSandbox
-   executing command: /usr/bin/glite-ce-job-output --noint --dir /tmp https://prod-ce-01.pd.infn.it:8443/CREAM608273414
-   output sandbox dir: /tmp/prod-ce-01.pd.infn.it_8443_CREAM608273414
-   invoking jobPurge
-   executing command: /usr/bin/glite-ce-job-purge --noint https://prod-ce-01.pd.infn.it:8443/CREAM608273414
-   CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
+    job status: DONE-OK
+    invoking getOutputSandbox
+    executing command: /usr/bin/glite-ce-job-output --noint --dir /tmp https://prod-ce-01.pd.infn.it:8443/CREAM608273414
+    output sandbox dir: /tmp/prod-ce-01.pd.infn.it_8443_CREAM608273414
+    invoking jobPurge
+    executing command: /usr/bin/glite-ce-job-purge --noint https://prod-ce-01.pd.infn.it:8443/CREAM608273414
+    CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
-   **** std.err ****
+    **** std.err ****
 
 
-   **** std.out ****
-   prod-wn-014 has EMI 3.15.0-1.el6
+    **** std.out ****
+    prod-wn-014 has EMI 3.15.0-1.el6
   
 
 WN-csh probe
@@ -459,13 +459,13 @@ This probe checks that csh is there on a WN managed by the CREAM-CE. It makes us
 ::
 
     $ ./cream_jobOutput.py --url https://prod-ce-01.pd.infn.it:8443/cream-lsf-grid -x /tmp/x509up_u733 --dir /tmp -j ./WN-csh.jdl
-   CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
+    CREAM JobOutput OK | retrieved outputSandbox: ['std.err', 'std.out']
 
-   **** std.err ****
+    **** std.err ****
 
 
-   **** std.out ****
-   prod-wn-016 has csh
+    **** std.out ****
+    prod-wn-016 has csh
 
 
 where
@@ -502,8 +502,7 @@ directories:
     $ ls -l /usr/libexec/grid-monitoring/probes/emi.cream/
     total 48
     -rwxr-xr-x 1 root root  1361 Jan 30 16:58 cream_allowedSubmission.py
-    -rwxr-xr-x 1 root root  2494 Jan 30 17:00 cream_jobCancel.py
-    -rwxr-xr-x 1 root root  2103 Jan 30 17:01 cream_jobPurge.py
+    -rwxr-xr-x 1 root root  2972 Jan 31 12:42 cream_jobOutput.py
     -rwxr-xr-x 1 root root  2972 Jan 31 12:42 cream_jobSubmit.py
     -rwxr-xr-x 1 root root 15527 Jan 30 16:29 cream.py
     -rwxr-xr-x 1 root root  1416 Jan 31 12:42 cream_serviceInfo.py
