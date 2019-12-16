@@ -497,29 +497,27 @@ is attached.
 Deployment example
 ~~~~~~~~~~~~~~~~~~
 
-In a Nagios server version 3.5.0 testing instance, we deployed the files
-needed to execute the probes described above in the following
-directories:
+In a Nagios server version 3.5.0 testing instance, we deployed the files needed to execute the probes described above in the following directories:
 
 ::
 
-    $ ls -l /usr/libexec/grid-monitoring/probes/emi.cream/
+    $ ls -l /usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/
     total 48
     -rwxr-xr-x 1 root root  1361 Jan 30 16:58 cream_allowedSubmission.py
     -rwxr-xr-x 1 root root  2972 Jan 31 12:42 cream_jobOutput.py
     -rwxr-xr-x 1 root root  2972 Jan 31 12:42 cream_jobSubmit.py
     -rwxr-xr-x 1 root root 15527 Jan 30 16:29 cream.py
     -rwxr-xr-x 1 root root  1416 Jan 31 12:42 cream_serviceInfo.py
-    -rw-r--r-- 1 root root   213 Jan 29 14:26 hostname.jdl
-    -rw-r--r-- 1 root root   129 Jan 30 16:21 sleep.jdl
-    drwxr-xr-x 2 root root  4096 Jan 31 11:34 wn
+    drwxr-xr-x 2 root root  4096 Jan 31 11:34 cream_cli
 
 and
 
 ::
 
-    $ ls -l /usr/libexec/grid-monitoring/probes/emi.cream/wn
+    $ ls -l /etc/nagios/plugins/eu.egi.CREAMCE/
     total 16
+    -rw-r--r-- 1 root root  213 Jan 29 14:26 hostname.jdl
+    -rw-r--r-- 1 root root  129 Jan 30 16:21 sleep.jdl
     -rw-r--r-- 1 root root  292 Jan 31 11:34 WN-csh.jdl
     -rwxr-xr-x 1 root root  603 Jan 31 11:34 WN-csh.sh
     -rw-r--r-- 1 root root  300 Jan 31 11:34 WN-softver.jdl
@@ -532,10 +530,9 @@ and defined the new services adding in the file
 
     define service{
             use                             local-service
-            host_name                       cream-41.pd.infn.it
-            service_description             emi.cream.CEDIRECT-AllowedSubmission
-            check_command                   ncg_check_native!/usr/libexec/grid-monit
-    oring/probes/emi.cream/cream_allowedSubmission.py!60!-x /tmp/dteam.proxy -p 8443
+            host_name                       prod-ce-01.pd.infn.it
+            service_description             eu.egi.CREAMCE-AllowedSubmission
+            check_command                   ncg_check_native!/usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/cream_allowedSubmission.py!60!-x /tmp/dteam.proxy -p 8443
             normal_check_interval           6
             retry_check_interval            3
             max_check_attempts              2
@@ -543,10 +540,9 @@ and defined the new services adding in the file
     }
     define service{
             use                             local-service
-            host_name                       cream-41.pd.infn.it
-            service_description             emi.cream.CEDIRECT-ServiceInfo
-            check_command                   ncg_check_native!/usr/libexec/grid-monit
-    oring/probes/emi.cream/cream_serviceInfo.py!60!-x /tmp/dteam.proxy -p 8443
+            host_name                       prod-ce-01.pd.infn.it
+            service_description             eu.egi.CREAMCE-ServiceInfo
+            check_command                   ncg_check_native!/usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/cream_serviceInfo.py!60!-x /tmp/dteam.proxy -p 8443
             normal_check_interval           6
             retry_check_interval            3
             max_check_attempts              2
@@ -554,12 +550,10 @@ and defined the new services adding in the file
     }
     define service{
             use                             local-service
-            host_name                       cream-41.pd.infn.it
-            service_description             emi.cream.CEDIRECT-JobSubmit
-            check_command                   ncg_check_native!/usr/libexec/grid-monit
-    oring/probes/emi.cream/cream_jobSubmit.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
-    -q creamtest1 -j /usr/libexec/grid-monitoring/probes/emi.cream/hostname.jdl --di
-    r /tmp 
+            host_name                       prod-ce-01.pd.infn.it
+            service_description             eu.egi.CREAMCE-JobSubmit
+            check_command                   ncg_check_native!/usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/cream_jobSubmit.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
+    -q creamtest1 -j /etc/nagios/plugins/eu.egi.CREAMCE/hostname.jdl
             normal_check_interval           6
             retry_check_interval            3
             max_check_attempts              2
@@ -567,12 +561,10 @@ and defined the new services adding in the file
     }
     define service{
             use                             local-service
-            host_name                       cream-41.pd.infn.it
-            service_description             emi.cream.WN-Softver
-            check_command                   ncg_check_native!/usr/libexec/grid-monit
-    oring/probes/emi.cream/cream_jobOutput.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
-    -q creamtest1 -j /usr/libexec/grid-monitoring/probes/emi.cream/wn/WN-softver.jdl
-     --dir /tmp
+            host_name                       prod-ce-01.pd.infn.it
+            service_description             eu.egi.CREAMCE.WN-Softver
+            check_command                   ncg_check_native!/usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/cream_jobOutput.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
+    -q creamtest1 -j /etc/nagios/plugins/eu.egi.CREAMCE/WN-softver.jdl
             normal_check_interval           6
             retry_check_interval            3
             max_check_attempts              2
@@ -580,13 +572,10 @@ and defined the new services adding in the file
     }
     define service{
             use                             local-service
-            host_name                       cream-41.pd.infn.it
-            service_description             emi.cream.WN-Csh
-            check_command                   ncg_check_native!/usr/libexec/grid-monit
-    oring/probes/emi.cream/cream_jobOutput.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
-    -q creamtest1 -j /usr/libexec/grid-monitoring/probes/emi.cream/wn/WN-csh.jdl --d
-    ir /tmp
-
+            host_name                       prod-ce-01.pd.infn.it
+            service_description             eu.egi.CREAMCE.WN-Csh
+            check_command                   ncg_check_native!/usr/libexec/argo-monitoring/probes/eu.egi.CREAMCE/cream_jobOutput.py!60!-x /tmp/dteam.proxy -p 8443 -l lsf 
+    -q creamtest1 -j /etc/nagios/plugins/eu.egi.CREAMCE/WN-csh.jdl
             normal_check_interval           6
             retry_check_interval            3
             max_check_attempts              2
