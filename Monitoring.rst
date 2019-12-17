@@ -295,7 +295,7 @@ This metric extends the cream\_jobSubmit.py functionality by retrieving the job'
 ::
 
     $ ./cream_jobOutput.py --help
-    Usage: cream_jobSubmit.py [options]
+    Usage: cream_jobOutput.py [options]
 
     Options:
       --version             show program's version number and exit
